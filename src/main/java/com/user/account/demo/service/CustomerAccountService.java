@@ -1,6 +1,6 @@
 package com.user.account.demo.service;
 
-import com.user.account.demo.controller.ResouceNotFoundException;
+import com.user.account.demo.controller.ResourceNotFoundException;
 import com.user.account.demo.entity.Account;
 import com.user.account.demo.entity.Transaction;
 import com.user.account.demo.entity.Customer;
@@ -12,18 +12,17 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Slf4j
-public class CustomerAccountServices {
+public class CustomerAccountService {
     private CustomerRepository customerRepository;
     private AccountRepository accountRepository;
     private AccountTransactionRepository accountTransactionRepository;
 
     @Autowired
-    public CustomerAccountServices(CustomerRepository customerRepository, AccountRepository accountRepository,
-                                   AccountTransactionRepository accountTransactionRepository) {
+    public CustomerAccountService(CustomerRepository customerRepository, AccountRepository accountRepository,
+                                  AccountTransactionRepository accountTransactionRepository) {
         this.customerRepository = customerRepository;
         this.accountRepository = accountRepository;
         this.accountTransactionRepository = accountTransactionRepository;
@@ -43,7 +42,7 @@ public class CustomerAccountServices {
     }
 
     private void throwResourceNotFoundException(Long id) {
-        throw new ResouceNotFoundException("Resource not found of id " + id);
+        throw new ResourceNotFoundException("Resource not found of id " + id);
     }
 
     public List<Account> getCustomerAccounts(Long customerId) {

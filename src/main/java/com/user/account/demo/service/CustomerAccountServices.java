@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-@Transactional
 @Slf4j
 public class CustomerAccountServices {
     private CustomerRepository customerRepository;
